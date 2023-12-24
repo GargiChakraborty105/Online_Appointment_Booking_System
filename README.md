@@ -1,5 +1,5 @@
 # Online_Appointment_Booking_System
-This online appointment booking system offers a seamless and flexible platform for both users and service providers. Whether you're a busy clinic, a buzzing salon, or a solo freelancer.
+This online appointment booking system offers a seamless and flexible platform for both users and service providers. Whether you're a busy clinic, a buzzing salon, or a solo freelancer, scheduling appointments has never been easier.
 
 Steps to use our system: 
 
