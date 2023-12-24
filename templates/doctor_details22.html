@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. Jane Dentist</title>
+    <link rel="stylesheet" href="/static/style1.css">
+</head>
+<style>
+    button.clicked {
+        background-color: rgb(87, 87, 87);
+    }
+  </style>
+<body>
+    <header>
+        <nav>
+            <ul><li><a href="/">Home</a></li><li><a href="/doctor">Doctors</a></li><li><a href="/login">{{Login}}</a></li><li><a href="/logout">{{logout}}</a></li><li>{{Name}}</li></ul>
+        </nav>
+      </header>
+    <main>
+        <div class="appointment-booking">
+            <h1>Schedule an Appointment</h1>
+            <br><h2>Next Available at 10:00 AM,Tomorrow</h2>
+            <br><h3><centre>Book Clinic Visit (No booking fee)</centre></h3>
+            <br><br><h2><centre>Fees: 500/-</centre></h2>
+            <h2>Book Your Slot</h2>
+            <form id="appointment-form" method="POST" action="/book">
+                <div class="time-slots">
+                  <button type="button" data-time="10:00 AM" onclick="selectSlot(this)">10:00 AM</button>
+                  <button type="button" data-time="11:00 AM" onclick="selectSlot(this)">11:00 AM</button>
+                  <button type="button" data-time="12:00 PM" onclick="selectSlot(this)">12:00 PM</button><br></div>
+                <div class="time-slots">
+                  <button type="button" data-time="1:00 PM" onclick="selectSlot(this)">1:00 PM</button>
+                  <button type="button" data-time="7:00 PM" onclick="selectSlot(this)">7:00 PM</button>
+                  <button type="button" data-time="8:00 PM" onclick="selectSlot(this)">8:00 PM</button><br></div>
+                <div>
+                  <button type="button" data-time="9:00 PM" onclick="selectSlot(this)">9:00 PM</button>
+              </form>
+          </div>
+          <br><br><form id="submit-form" method="POST" action="/book">
+            <input type="hidden" id="selected-slot" name="time" value="">
+            <input type="hidden" name="doc_id" value="22">
+            <button type="submit" id="book-appointment" disabled style="background-color: rgb(83, 83, 83);">Book Appointment</button>
+          </form>
+        </div>
+        <div class="doctor-details">
+            <div class="doctor-info">
+                <img src="/static/doctor22.jpg" alt="Dr. Jane Photo" id="doctor-photo" >
+                <div class="details">
+                    <h3 id="doctor-name">Dr. Jane Doe</h3>
+                    <p id="doctor-qualifications">Doctor of Dental Surgery (DDS) or Doctor of Dental Medicine (DMD)</p>
+                    <p id="doctor-specialties">American Dental Association (ADA)</p>
+                </div>
+            </div>
+            <p id="doctor-bio"><b>Dr. Jane Doe is a passionate and dedicated dentist known for her gentle touch, meticulous care, and commitment to providing her patients with a positive and pain-free dental experience.</b></p>
+        </div>
+    </main>
+    <div class="testimonials">
+        <h3>Patient Testimonials</h3>
+        <blockquote>“I used to avoid the dentist at all costs, fueled by childhood trauma. But Dr. Doe completely changed my perception! She is patient, understanding, and explains everything in clear, calming terms. Her gentle touch and kind demeanor made even the most complex procedure painless. Now, I actually look forward to my dental appointments!” - <b>Sarah M.</b></blockquote>
+        <blockquote>“We bring our entire family to Dr. Doe from our toddler to our grandparents. She creates a welcoming environment for everyone, tailoring her approach to each age group. The kids love her playful personality and colorful decorations, while my parents appreciate her thoroughness and attention to detail. We all trust Dr. Doe completely to keep our smiles healthy and happy.” - <b>John L.</b></blockquote>
+        <blockquote>“As a professional musician, my teeth are my tools. I demand precision and care, and Dr. Doe delivers every time. Her fillings are seamless, her crowns fit perfectly, and she has an artistic eye for aesthetic details. Not only is my smile healthy, but it is also more beautiful than ever before. Bonus points for painless procedures. She truly lives up to her name!” - <b>Emily A.</b></blockquote>
+        <blockquote>“Dental anxiety used to cripple me. But Dr. Doe has calming presence and understanding demeanor put me at ease instantly. She listens to my concerns, answers all my questions patiently, and even offers stress-reducing strategies like aromatherapy and calming music. Now, I walk into her office with confidence, knowing I’m in the best hands.” - <b>David K.</b></blockquote>
+        <blockquote>“Dr. Doe doesn’t just treat teeth; she treats the whole person. She takes a holistic approach, considering my overall health and wellness when recommending treatments. She offers natural remedies alongside traditional options, giving me choices and empowering me to participate in my dental care. It’s refreshing to find a dentist who understands the connection between oral health and overall well-being.” - <b>Maria S.</b></blockquote>
+    </div>
+    <footer>
+        <p>&copy; 2023 HealthyCare Kolkata</p>
+    </footer>
+    <script>
+        function selectSlot(button) {
+            var selectedSlot = document.getElementById("selected-slot");
+            var bookAppointmentButton = document.getElementById("book-appointment");
+            if (button.classList.contains("clicked")) {
+                button.classList.remove("clicked");
+                selectedSlot.value = "";
+                bookAppointmentButton.disabled = true;
+                bookAppointmentButton.style.backgroundColor = "grey";
+            } else {
+                var buttons = document.querySelectorAll(".time-slots button");
+                for (var i = 0; i < buttons.length; i++) {
+                    buttons[i].classList.remove("clicked");
+                }
+                button.classList.add("clicked");
+                selectedSlot.value = button.textContent;
+                bookAppointmentButton.disabled = false;
+                bookAppointmentButton.style.backgroundColor = "#007bff";
+            }
+        }
+      </script>
+</body>
+</html>

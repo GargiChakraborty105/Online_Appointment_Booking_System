@@ -1,0 +1,57 @@
+/* General styling */
+body {
+    font-family: sans-serif;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+    background-color: rgb(255, 255, 255); /* Center content for better visual presentation */
+  }
+
+  nav ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  nav li {
+      display: inline-block;
+      margin-right: 20px;
+  }
+    
+  /* Header */
+  header {
+    margin-bottom: 30px;
+  }
+  
+  h1 {
+    font-size: 50px;
+    margin-bottom: 15px;
+  }
+  
+  /* Confirmation details */
+  .confirmation-details {
+    border: 4px solid #ff9d9d;
+    padding: 20px;
+    border-radius: 5px;
+    max-width: 500px; /* Adjust as needed */
+    margin: 0 auto;
+  }
+  
+  .confirmation-details h2 {
+    margin-bottom: 15px;
+  }
+  
+  .confirmation-details ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 15px;
+  }
+  
+  .confirmation-details li {
+    margin-bottom: 5px;
+  }
+  
+  .confirmation-details p {
+    margin-bottom: 0;
+  }
+  

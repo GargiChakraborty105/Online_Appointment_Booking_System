@@ -1,0 +1,155 @@
+/* General styling */
+body {
+  font-family: 'Open Sans', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #ffd2d2;
+}
+
+  header {
+    background-color: #f0f0f0;
+    padding: 20px;
+  }
+
+  nav ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+  }
+
+  nav li {
+      display: inline-block;
+      margin-right: 20px;
+  }
+
+  
+  h1 {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    margin: 0;
+    justify-content: center;
+  }
+  
+  h2 {
+    font-size: 20px;
+    margin-bottom: 50px;
+    border-bottom: 2px solid #e8dcdc;
+  }
+  
+  main {
+    padding: 40px;
+    display: flex;
+    margin-bottom: 20px;
+     /* Add space below main content */
+  }
+  
+  .container {
+    max-width: 960px; /* Optional: Set a maximum width for content */
+    margin: 0 flex;
+    display: flex;/* Center the content horizontally */
+  }
+  
+  /* Appointment booking section */
+  .appointment-booking {
+    flex: 1;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    margin-right: 20px;
+  }
+  
+  .appointment-booking h3 {
+    font-size: 25px;
+    margin-bottom: 10px;
+  }
+  
+  .appointment-booking form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+  
+  .appointment-booking label {
+    font-weight: bold;
+  }
+  
+  .appointment-booking input,
+  .appointment-booking select {
+    padding: 8px;
+    border: 1px solid #ddd;
+    border-radius: 3px;
+  }
+  
+  .appointment-booking button {
+    background-color: #007bff;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  /* Doctor details section */
+  .doctor-details {
+    flex: 2;
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    
+  }
+  
+  .doctor-info {
+    display: auto;
+    align-items: center;
+    margin-bottom: 15px;
+    border-bottom: 5px solid #e8dcdc;
+  }
+  
+  .doctor-photo {
+    width: 150px;
+    height: 150;
+    border-radius: 10px;
+    margin-right: 2px;
+  }
+  
+  .doctor-info p {
+    margin-bottom: 100px;
+  }
+  
+  .doctor-bio {
+    line-height: 3.0;
+    padding: 100px;
+    border-top: 300px solid #721616;
+  }
+  
+  /* Testimonials section */
+  .testimonials {
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+  }
+  
+  .testimonials blockquote {
+    border-left: 5px solid #ddd;
+    padding-left: 20px;
+    margin-bottom: 20px;
+    font-style: italic;
+  }
+  
+  .testimonials p {
+    font-size: 14px;
+    text-align: right;
+  }
+  
+  /* Media queries for responsiveness */
+  @media only screen and (max-width: 768px) {
+    main {
+      display: block;
+    }
+  
+    .appointment-booking,
+    .doctor-details {
+      margin-bottom: 20px;
+    }
+  }
+  

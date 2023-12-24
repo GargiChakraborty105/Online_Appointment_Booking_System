@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment System - Doctors</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style_doc.css')}}">
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+                <li><a href="/doctor">Doctors</a></li>
+                <!-- <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li> -->
+                <li><a href="/login">{{Login}}</a></li>
+                <li><a href="/logout">{{logout}}</a></li>
+                <li>{{Name}}</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <h1>Our Doctors</h1>
+
+        <section class="doctors">
+            </section>
+    </main>
+
+    <footer>
+
+        
+        </footer>
+
+</html>
+<script>
+const doctors = [
+    {
+        id: 1,
+        name: "Dr. John Smith",
+        specialization: "General Practitioner",
+        image: "static\\doctor14.jpg", // Replace with actual image path
+        link:"/doctor14"
+    },
+    {
+        id: 2,
+        name: "Dr. Jane Doe",
+        specialization: "Dentist",
+        image: "static\\doctor22.jpg", // Replace with actual image path
+        link: "/doctor22"
+    },
+    {
+        id: 3,
+        name: "Dr. David Miller",
+        specialization: "Cardiologist",
+        image: "static\\doctor169.jpg", // Replace with actual image path
+        link: "/doctor169"
+    }
+];
+const doctorsSection = document.querySelector('.doctors');
+// Create doctor cards for the sample data
+doctors.forEach(doctor => {
+    const doctorCard = document.createElement('div');
+    doctorCard.classList.add('doctor-card');
+
+    // Add elements for doctor information
+    doctorCard.innerHTML = `
+        <img src="${doctor.image}" alt="${doctor.name}">
+        <h3>${doctor.name}</h3>
+        <p>${doctor.specialization}</p>
+        <button class="book-button">Book Appointment</button>
+    `;
+
+    // Handle click to view doctor details or book appointment
+    doctorCard.addEventListener('click', () => {
+        // Redirect to doctor details page or initiate booking process
+        window.location.href = doctor.link;
+        console.log("Doctor clicked:", doctor); // Replace with your logic
+    });
+
+    doctorsSection.appendChild(doctorCard);
+});</script>

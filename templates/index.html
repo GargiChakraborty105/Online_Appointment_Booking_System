@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Appointment System</title>
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}"> </head>
+<body>
+    <header>
+        <h1>Appointment System</h1>
+        <nav>
+            <ul>
+                <li><a href="/">Home</a></li>
+
+
+                <li><a href="/doctor">Doctors</a></li>
+                <!-- <li><a href="#">About Us</a></li>
+                <li><a href="#">Contact</a></li> -->
+                <li><a href="/login">{{Login}}</a></li>
+                <li><a href="/logout">{{logout}}</a></li>
+                <li>{{Name}}</li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="hero">
+            <h2>Book appointments with ease.</h2>
+            <p>Find the right doctor and schedule your appointment in minutes.</p>
+            <!-- <button class="cta" href= "/login">Get Started</button> -->
+        </section>
+
+        <section class="features">
+            <h3>Our Features</h3>
+            <ul>
+                <li>Large network of doctors</li>
+                <li>Convenient online booking</li>
+                <li>24/7 appointment access</li>
+            </ul>
+        </section>
+
+        <section class="testimonials">
+            <h3>What Our Patients Say</h3>
+            <blockquote>"I was able to book an appointment with my doctor within minutes. The process was so easy and convenient!" - John Wordsworth</blockquote>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2023 Appointment System</p>
+    </footer>
+</body>
+</html>

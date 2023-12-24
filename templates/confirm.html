@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Appointment Confirmed!!!</title>
+  <link rel="stylesheet" href="/static/confirm_style.css"> </head>
+<body>
+  <header><nav>
+    <ul>
+        <li><a href="/">Home</a></li>
+
+
+        <li><a href="/doctor">Doctors</a></li>
+        <!-- <li><a href="#">About Us</a></li>
+        <li><a href="#">Contact</a></li> -->
+        <li><a href="/login">{{Login}}</a></li>
+        <li><a href="/logout">{{logout}}</a></li>
+        <li>{{Name}}</li>
+    </ul>
+</nav>
+</header>
+  <header>
+    <h1>Appointment Confirmed!!!</h1>
+  </header>
+  <main>
+    <div class="confirmation-details">
+      <h2>Thank you for booking your appointment!</h2>
+      <p>Here are the details of your appointment:</p>
+      <ul>
+        <li>Doctor: {{name}}</li>
+        <li>Date: {{date}}</span></li>
+        <li>Time: {{time}}</span></li>
+        </ul>
+      <p>Please note this information for your records.</p>
+    </div>
+  </main>
+  <script src="confirm_script.js"></script> </body>
+</html>

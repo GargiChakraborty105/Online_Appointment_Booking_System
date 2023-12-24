@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dr. David Miller - Cardiologist</title>
+    <link rel="stylesheet" href="/static/style1.css">
+</head>
+<style>
+  button.clicked {
+      background-color: rgb(87, 87, 87);
+  }
+</style>
+<body><header>
+  <nav>
+      <ul><li><a href="/">Home</a></li><li><a href="/doctor">Doctors</a></li><li><a href="/login">{{Login}}</a></li><li><a href="/logout">{{logout}}</a></li><li>{{Name}}</li></ul>
+  </nav>
+</header>
+
+<main>
+  <div class="appointment-booking">
+      <h1>Schedule an Appointment</h1>
+      <br><h2>Next Available at 10:00 AM,Tomorrow</h2>
+      <br><h3><centre>Book Clinic Visit (No booking fee)</centre></h3>
+      <br><br><h2><center>Fees: 1000/-</center></h2>
+      <h2><center>Book Your Slot</center></h2>
+      
+          <form id="appointment-form" method="POST" action="/book">
+            <div class="time-slots">
+              <button type="button" data-time="10:00 AM" onclick="selectSlot(this)">10:00 AM</button>
+              <button type="button" data-time="11:00 AM" onclick="selectSlot(this)">11:00 AM</button>
+              <button type="button" data-time="12:00 PM" onclick="selectSlot(this)">12:00 PM</button><br></div>
+            <div class="time-slots">
+              <button type="button" data-time="1:00 PM" onclick="selectSlot(this)">1:00 PM</button>
+              <button type="button" data-time="7:00 PM" onclick="selectSlot(this)">7:00 PM</button>
+              <button type="button" data-time="8:00 PM" onclick="selectSlot(this)">8:00 PM</button><br></div>
+            <div>
+              <button type="button" data-time="9:00 PM" onclick="selectSlot(this)">9:00 PM</button>
+          </form>
+      </div>
+      <br><br><form id="submit-form" method="POST" action="/book">
+        <input type="hidden" id="selected-slot" name="time" value="">
+        <input type="hidden" name="doc_id" value="169">
+        <button type="submit" id="book-appointment" disabled style="background-color: rgb(83, 83, 83);">Book Appointment</button>
+      </form>
+  </div>
+  <div class="doctor-details">
+    <div class="doctor-info">
+        <img src="static/doctor169.jpg" alt="Dr. David Miller Photo" id="doctor-photo" >
+        <div class="details">
+            <h3 id="doctor-name">Dr. David Miller</h3>
+            <p id="doctor-qualifications">Doctor of Medicine (MD), Master of Surgery (MS), PG Diploma, and Diplomate of National Board (DNB)</p>
+            <p id="doctor-specialties">Cardiology, Interventional Cardiology</p>
+        </div>
+    </div>
+    <p id="doctor-bio"><b>Dr. David Miller, a leading cardiologist specializing in interventional procedures, offers minimally invasive options for treating complex heart problems. His skillful approach ensures effective treatments with minimal recovery time.</b></p>
+</div>
+</main>
+
+<script>
+  function selectSlot(button) {
+      var selectedSlot = document.getElementById("selected-slot");
+      var bookAppointmentButton = document.getElementById("book-appointment");
+      if (button.classList.contains("clicked")) {
+          button.classList.remove("clicked");
+          selectedSlot.value = "";
+          bookAppointmentButton.disabled = true;
+          bookAppointmentButton.style.backgroundColor = "grey";
+      } else {
+          var buttons = document.querySelectorAll(".time-slots button");
+          for (var i = 0; i < buttons.length; i++) {
+              buttons[i].classList.remove("clicked");
+          }
+          button.classList.add("clicked");
+          selectedSlot.value = button.textContent;
+          bookAppointmentButton.disabled = false;
+          bookAppointmentButton.style.backgroundColor = "#007bff";
+      }
+  }
+</script>
+<!-- </script> -->
+    <div class="testimonials">
+        <h3>Patient Testimonials</h3>
+        <blockquote>"Dr. Miller is a lifesaver! He expertly diagnosed my heart condition and guided me through the treatment process with compassion and expertise." - <b>Jane Doe</b></blockquote>
+        <blockquote>"Dr. Miller is more than just a cardiologist, he's a lifesaver. After facing a critical diagnosis, his calm demeanor and unwavering expertise guided me through every step. I felt cared for not just as a patient, but as a person. Today, I'm enjoying life to the fullest again, thanks to Dr. Miller." - <b>John Smith</b></blockquote>
+        <blockquote>"Choosing Dr. Miller for my minimally invasive heart procedure was the best decision I ever made. His skill and precision are unmatched, and I was back on my feet in no time. His clear explanations and constant reassurance throughout the process truly put me at ease." - <b>William Franklin</b></blockquote>
+        <blockquote>"Dr. Miller isn't just a doctor, he's a friend. He takes the time to listen to my concerns and always goes the extra mile to ensure I understand my options. He's made a complex medical journey feel personal and supportive. I wouldn't trust my heart to anyone else." - <b>Sarah Jones</b></blockquote>
+        <blockquote>"Dr. Miller doesn't just treat the condition, he treats the whole person. He speaks to me, not at me, and always takes the time to answer my questions thoroughly. He understands the emotional toll of heart issues and offers not just medical advice, but genuine empathy and support." - <b>Michael Anderson</b></blockquote>
+    </div>
+    <footer>
+        <p>&copy; 2023 HealthyCare Kolkata</p>
+    </footer>
+    <!-- <script>fetch('doctor-details.json')
+        .then(response => response.json())
+        .then(data => {
+          // Update doctor information
+          document.getElementById('doctor-photo').src = data.photo;
+          document.getElementById('doctor-photo').alt = data.name + ", " + data.specialization + " doctor"; // Alt text for accessibility
+          document.getElementById('doctor-name').textContent = data.name;
+          document.getElementById('doctor-specialization').textContent = data.specialization;
+          document.getElementById('doctor-bio').textContent = data.bio;
+      
+          // Handle time slot button clicks and POST request
+          const timeSlotButtons = document.querySelectorAll(".time-slots button");
+          const selectedTimeInput = document.getElementById("selected-time");
+      
+          timeSlotButtons.forEach((button) => {
+            button.addEventListener("click", () => {
+              const selectedTime = button.dataset.time;
+              selectedTimeInput.value = selectedTime;
+      
+              // Submit form data via POST
+              const formData = new FormData();
+              formData.append('selectedTime', selectedTime);
+      
+              fetch('/book', {
+                method: 'POST',
+                body: formData
+              })
+              .then(response => response.json())
+              .then(data => {
+                // Handle server response, e.g., display success message or redirect
+                console.log(data);
+              })
+              .catch(error => {
+                // Handle errors
+                console.error(error);
+              });
+            });
+          });
+      
+          // Update services list
+          const servicesList = document.getElementById('services-list');
+          data.services.forEach(service => {
+            const listItem = document.createElement('li');
+            listItem.textContent = service;
+            servicesList.appendChild(listItem);
+          });
+      
+          // Populate testimonials
+          const testimonialsContainer = document.getElementById('testimonials-container');
+          data.testimonials.forEach(testimonial => {
+            const testimonialDiv = document.createElement('div');
+            testimonialDiv.textContent = testimonial.quote;
+            testimonialDiv.appendChild(document.createElement('p')).textContent = `- ${testimonial.patientName}`;
+            testimonialsContainer.appendChild(testimonialDiv);
+          });
+        });
+      </script> -->
+</body>
+</html>
